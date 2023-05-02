@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ContentLoader from 'react-content-loader';
-import ImageLoader from './ImageLoader';
 
+import BlogCard from './BlogCard';
 const BlogCardList = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [posts, setPosts] = useState([]);
@@ -34,19 +34,7 @@ const BlogCardList = () => {
                 ))
 
             ) : (
-                posts.map(post => (
-                    <div className="blog-card" key={post.id}>
-                        <ImageLoader src={`https://picsum.photos/id/${post.id}/200/300`} alt={post.title} />
-                        <div className="blog-card-content">
-                            <h2>{post.title}</h2>
-                            <p>{post.body}</p>
-                            <div className="blog-card-details">
-                                <span className="blog-card-author">John Doe</span>
-                                <span className="blog-card-date">01/05/2023</span>
-                            </div>
-                        </div>
-                    </div>
-                ))
+                posts.map(post => <BlogCard key={post.id} post={post} />)
             )}
         </div>
     );

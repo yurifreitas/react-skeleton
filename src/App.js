@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import BlogCardList from './BlogListCart';
-import Loading from './Loading';
+import BlogCardList from './components/BlogListCart';
+import Loading from './components/Loading';
+import Header from './components/Header';
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [auth, setAuth] = useState([]);
@@ -19,9 +20,9 @@ function App() {
 
   return (
     <div className="App">
+      <Header/>
       {isLoading ? (
         <Loading/>
-   
       ) : (
         <BlogCardList auth={auth} />
       )}
